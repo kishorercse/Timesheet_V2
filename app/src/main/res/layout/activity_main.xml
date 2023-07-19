@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/form_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="Timesheet Entry form"
+        android:textSize="@dimen/title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/employee_id_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="60dp"
+        android:text="Employee RFID"
+        android:textSize="@dimen/label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/form_title" />
+
+    <EditText
+        android:id="@+id/employee_id_value"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="20dp"
+        android:maxLength="20"
+        android:inputType="number"
+        android:textSize="@dimen/label"
+        app:layout_constraintBottom_toBottomOf="@+id/employee_id_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/employee_id_label"
+        app:layout_constraintTop_toTopOf="@+id/employee_id_label"
+        app:layout_constraintVertical_bias="0.384" />
+
+    <TextView
+        android:id="@+id/date_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="72dp"
+        android:text="Date"
+        android:textSize="@dimen/label"
+        app:layout_constraintStart_toStartOf="@+id/employee_id_label"
+        app:layout_constraintTop_toBottomOf="@+id/employee_id_label" />
+
+    <TextView
+        android:id="@+id/date_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="15-07-2023"
+        android:textSize="@dimen/label"
+        app:layout_constraintBottom_toBottomOf="@+id/date_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/employee_id_value"
+        app:layout_constraintTop_toTopOf="@+id/date_label"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/time_mode_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="88dp"
+        android:text="Time"
+        android:textSize="@dimen/label"
+        app:layout_constraintStart_toStartOf="@+id/date_label"
+        app:layout_constraintTop_toBottomOf="@+id/date_label" />
+
+    <TextView
+        android:id="@+id/time_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="20:00"
+        android:textSize="@dimen/label"
+        app:layout_constraintBottom_toBottomOf="@+id/time_mode_textview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/date_value"
+        app:layout_constraintTop_toTopOf="@+id/time_mode_textview"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/response_image_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/time_mode_textview" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
