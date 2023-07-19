@@ -4,4 +4,6 @@
     <dimen name="title">20sp</dimen>
 
     <dimen name="label">16sp</dimen>
+
+    <dimen name="actionBarSize">64dp</dimen>
 </resources>

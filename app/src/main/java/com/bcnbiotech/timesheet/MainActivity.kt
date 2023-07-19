@@ -1,15 +1,18 @@
 package com.bcnbiotech.timesheet
 
-import android.graphics.Color
 import android.os.Bundle
 import android.os.Environment
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
+import android.view.View.OnClickListener
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
@@ -25,13 +28,14 @@ import java.util.Timer
 import java.util.TimerTask
 
 @Suppress("PrivatePropertyName")
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), OnClickListener {
 
     private lateinit var timeModeTextView: TextView
     private lateinit var employeeRFIDEditText: EditText
     private lateinit var dateTextView: TextView
     private lateinit var timeTextView: TextView
     private lateinit var responseImageView: ImageView
+    private lateinit var toolbar: Toolbar
 
     private val TIME_IN_MODE = "Time In"
     private val TIME_OUT_MODE = "Time Out"
@@ -285,25 +289,30 @@ class MainActivity : AppCompatActivity() {
         timeTextView = findViewById(R.id.time_value)
         employeeRFIDEditText = findViewById(R.id.employee_id_value)
         responseImageView = findViewById(R.id.response_image_view)
+        toolbar = findViewById(R.id.toolbar)
 
         setTimeMode(TIME_IN_MODE)
-        timeModeTextView.setOnClickListener {
-            val timeMode = timeModeTextView.text.toString()
-            when (timeMode) {
-                TIME_IN_MODE -> setTimeMode(TIME_OUT_MODE)
-                TIME_OUT_MODE -> setTimeMode(TIME_IN_MODE)
-            }
-        }
+        timeModeTextView.setOnClickListener(this)
+        toolbar.setOnClickListener(this)
     }
 
     private fun setTimeMode(timeMode: String) {
         val backgroundColor = when(timeMode) {
-            TIME_IN_MODE -> Color.GREEN
-            TIME_OUT_MODE -> Color.RED
-            else -> Color.WHITE
+            TIME_IN_MODE -> ContextCompat.getColor(this, R.color.green)
+            TIME_OUT_MODE -> ContextCompat.getColor(this, R.color.red)
+            else -> ContextCompat.getColor(this, R.color.white)
         }
         timeModeTextView.setBackgroundColor(backgroundColor)
+        toolbar.setBackgroundColor(backgroundColor)
         timeModeTextView.text = timeMode
+    }
+
+    override fun onClick(v: View?) {
+        val timeMode = timeModeTextView.text.toString()
+        when (timeMode) {
+            TIME_IN_MODE -> setTimeMode(TIME_OUT_MODE)
+            TIME_OUT_MODE -> setTimeMode(TIME_IN_MODE)
+        }
     }
 
 }
